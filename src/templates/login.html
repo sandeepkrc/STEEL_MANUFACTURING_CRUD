@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Login
+{% endblock %}
+
+{% block slider %}
+{% endblock %}
+
+{% block content %}
+      <!-- login section -->
+<section class="contact_section layout_padding">
+    <div class="container ">
+      <div class="heading_container">
+        <h2 class="">
+        {{rs}} !! Login {{msg}}  !!!
+        </h2>
+
+
+      </div>
+
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+
+          <form action="{% url 'login_bcustomer' %}" method="post">
+              {% csrf_token %}
+            <div>
+              <input type="text" placeholder="Name" name="un" required/>
+            </div>
+
+             <div>
+              <input type="password"  placeholder="Password" name="pw" required />
+            </div>
+            <div class="d-flex ">
+              <button>
+                Log in
+              </button>
+            </div>
+          </form>
+             <p> Don't have account <a href="{% url 'register_bcustomer' %}">Register Here</a>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map-responsive">
+              <iframe loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJpwh-ILbpDDkRgUCscG_hQSE&key=AIzaSyBikuwwj54VFaSzS-EKWRTlQODKEz_xyso" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <!-- end slider section -->
+{% endblock %}

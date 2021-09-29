@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Register
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block content %}
+ <section class="contact_section layout_padding">
+    <div class="container ">
+      <div class="heading_container">
+        <h2 class=""> {{f}} {{msg}} {{try}}</h2>
+
+
+      </div>
+
+     <div class="container">
+      <div class="row">
+
+        <div class="col-md-6">
+          <form action="#" method="post">
+              {% csrf_token %}
+                <div>
+                  <input type="text" name="bcid" placeholder="Customer ID" />
+                </div>
+                <div>
+                  <input type="text"  name="cname" placeholder="Name" />
+                </div>
+                <div>
+                  <input type="email" name="email" placeholder="Email" />
+                </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+                <div>
+                  <input type="text"  name="add" placeholder="Address" />
+                </div>
+                <div>
+                  <input type="password" name="p" placeholder="Password" />
+                </div>
+                <div>
+                   <input type="password" name="c" placeholder="Confirm Password" />
+                </div>
+        </div>
+
+          <div class="d-flex ">
+                  <button>
+                    Register
+                  </button>
+          </div>
+
+          </form>
+
+        </div>
+            <p> Already have an account <a href="{% url 'login_bcustomer' %}">Login Here</a> </p>
+     </div>
+    </div>
+
+
+ </section>
+
+{% endblock %}

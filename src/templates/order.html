@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}
+View Product
+{% endblock %}
+
+{% block slider %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<section class="contact_section layout_padding">
+    <div class="container ">
+      <div class="heading_container">
+        <h2 class="">
+     {{msg}}  !!!
+        </h2>
+
+     <h1> All PRODUCTS</h1>
+<!-- <h2><a href="ordered_product">Order a Product</a></h2> -->
+
+
+<table border="red">
+    <th>Product id</th>
+    <th>Product Nmae</th>
+    <th>Product cost</th>
+    <th>M.F.D</th>
+    <th> EXP.D</th>
+    <th>Quantity</th>
+   {% if current_user %}
+    <th>Action</th>
+    <th>Action2</th>
+    {% endif %}
+
+{% for p in product %}
+<tr>
+   <td>{{ p.id }}</td>
+   <td>{{ p.pname}}</td>
+d
+   <td>{{ p.pcost}}</td>
+   <td>{{ p.pmfd}}</td>
+   <td>{{ p.pexpd}}</td>
+   <td>{{ p.quantity}}</td>
+   {% if current_user %}
+   <td>
+     <form action="/update_product/{{p.id}}/">
+       <input type="submit" value="UPDATE">
+     </form>
+     <!-- <a href="update_product/{{p.id}}/">Update</a> -->
+   </td>
+   <td>
+     <form action="add_to_cart">
+              <input type="submit" value="Add To Cart">
+              <input type="text" name="pid" value="{{p.id}}" hidden>
+              {% comment %}
+              {% for u in user %}
+              {{u.cname}} {{u.bcid}}
+            <input type="text" name="custu" value="{{u.bcid}}" hidden>
+            {% endfor %}
+
+              {% endcomment %}
+
+      </form>
+     </td>
+
+    {% endif %}
+
+  <!-- <td><a href="ordered_product/{{p.id}}/">Order</a> -->
+</tr>
+{% endfor %}
+</table>
+<h1>  {{msg}}</h1>
+<h1>  {{delete}}</h1>
+</div>
+    </div>
+</section>
+
+{% endblock %}

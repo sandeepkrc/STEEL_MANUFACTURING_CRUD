@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}
+Cart
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block nav %}
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">R C M</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'payment' %}">Pay  </a></li>
+
+
+
+        <li><a href="{% url 'product_delete' %}">Delete Products </a></li>
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+       <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+       <li><a href="{% url 'Cart_View' %}"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+
+    </ul>
+  </div>
+</nav>
+
+
+
+
+{% endblock %}
+{% block content %}
+
+
+<div class="container" mt-4 align="center">
+
+<h1>show cart</h1>
+
+<table border="red">
+    <th>Customer ID</th>
+    <th>Product id</th>
+    <th>Product Price</th>
+    <th>Quantity</th>
+    <th>Action</th>
+{% for p in obj %}
+<tr>
+   <td>{{ p.b_id }}</td>
+   <td>{{ p.p_id }}</td>
+   <td>{{ p.price}}</td>
+   <td>{{ p.quantity}}</td>
+   <td>
+
+     <form action="order_product" method="post">
+       {% csrf_token %}
+       <input type="submit" value="PLACED ORDER">
+       <input type="text" name="cid" value="{{p.cart_id}}" hidden>
+     </form>
+
+   </td>
+
+</tr>
+{% endfor %}
+</table>
+
+
+
+</div>
+{% endblock %}

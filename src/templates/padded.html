@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+Added
+{% endblock %}
+{% block slider %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<section class="contact_section layout_padding">
+    <div class="container ">
+      <div class="heading_container">
+
+        <h2 class=""> Product Added Successfully</h2>
+
+         <div class="d-flex ">
+                  <button>
+                   <a href="{% url 'register_product' %}">Add Another</a>
+                  </button>
+          </div>
+          </div>
+     </div>
+ </section>
+
+{% endblock %}
